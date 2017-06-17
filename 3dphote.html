@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        body {
+            background: black;
+        }
+        
+        #box1 {
+            perspective: 2000px;
+        }
+        
+        #box {
+            width: 200px;
+            height: 300px;
+            position: relative;
+            margin: 300px 0 0 600px;
+            transform-style: preserve-3d;
+            transition: all 1s ease 0s;
+        }
+        
+        #box li {
+            width: 200px;
+            height: 300px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            list-style: none;
+        }
+        
+        #box li img {
+            width: 200px;
+            height: 300px;
+            -webkit-box-reflect: below 10px -webkit-linear-gradient( top, rgba(0, 0, 0, 0)50%, rgba(0, 0, 0, 0.5)100%);
+        }
+        
+        #box li:nth-child(1) {
+            transform: translateZ(400px);
+            z-index: 2;
+        }
+        
+        #box li:nth-child(2) {
+            transform: rotateY(40deg) translateZ(400px);
+        }
+        
+        #box li:nth-child(3) {
+            transform: rotateY(80deg) translateZ(400px);
+        }
+        
+        #box li:nth-child(4) {
+            transform: rotateY(120deg) translateZ(400px);
+        }
+        
+        #box li:nth-child(5) {
+            transform: rotateY(160deg) translateZ(400px);
+        }
+        
+        #box li:nth-child(6) {
+            transform: rotateY(200deg) translateZ(400px);
+        }
+        
+        #box li:nth-child(7) {
+            transform: rotateY(240deg) translateZ(400px);
+        }
+        
+        #box li:nth-child(8) {
+            transform: rotateY(280deg) translateZ(400px);
+        }
+        
+        #box li:nth-child(9) {
+            transform: rotateY(320deg) translateZ(400px);
+        }
+        /* li:nth-child(10) {
+            transform: rotateY(300deg) translateZ(300px);
+        }*/
+        
+        #box2 {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            transform-style: preserve-3d;
+            margin: 300px 0 0 1000px;
+        }
+        
+        #box2 li {
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        #box2 li img {
+            width: 150px;
+            height: 150px;
+        }
+        
+        #box2 li:nth-child(1) {
+            transform: translateY(75px)
+        }
+        
+        #box2 li:nth-child(2) {
+            transform: rotateY(90deg) translateY(75px);
+        }
+        
+        #box2 li:nth-child(3) {
+            transform: rotateY(180deg) translateY(75px);
+        }
+        
+        #box2 li:nth-child(4) {
+            transform: rotateY(270deg) translateY(75px);
+        }
+        
+        #box2 li:nth-child(5) {
+            transform: rotateX(90deg) translateY(75px);
+        }
+        
+        #box2 li:nth-child(6) {
+            transform: rotateX(270deg) translateY(75px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1">
+        <ul id="box">
+            <li><img src="img/t1.png" alt=""></li>
+            <li><img src="img/t2.png" alt=""></li>
+            <li><img src="img/t3.png" alt=""></li>
+            <li><img src="img/t4.png" alt=""></li>
+            <li><img src="img/t5.png" alt=""></li>
+            <li><img src="img/t7.png" alt=""></li>
+            <li><img src="img/t6.png" alt=""></li>
+            <li><img src="img/t7.png" alt=""></li>
+            <li><img src="img/t8.png" alt=""></li>
+            <!--   <li><img src="img/t9.png" alt=""></li>-->
+            <!--<li><img src="img/t10.png" alt=""></li>-->
+        </ul>
+        <!-- <ul id="box2">
+            <li><img src="img/t10.png" alt=""></li>
+            <li><img src="img/t10.png" alt=""></li>
+            <li><img src="img/t10.png" alt=""></li>
+            <li><img src="img/t10.png" alt=""></li>
+            <li><img src="img/t10.png" alt=""></li>
+            <li><img src="img/t10.png" alt=""></li>
+        </ul>-->
+
+        <audio src="music/smalltime.mp3" autoplay loop="loop">
+           
+        </audio>
+    </div>
+
+</body>
+<script src="jquery.js"></script>
+<script src="jq.mousewheel.js"></script>
+<script>
+    window.onload = function() {
+
+        move();
+    }
+
+
+    /*function change(timmer, shower) {
+
+        var dom = document.getElementById("box");
+        var num = 0;
+
+        shower = function() {
+            if (num < 360000) {
+                num += 40;
+            } else {
+                num = 0;
+                dom.style.transform = "rotateY(0deg)";
+            }
+            dom.style.transform = "rotateY(" + num + "deg) rotateX(" + num / 100 + "deg) ";
+        }
+
+        timmer = setInterval(shower, 1000);
+    }
+*/
+
+
+
+    function move() {
+
+        var dom = document.getElementById("box");
+        var num = 0;
+
+        shower = function() {
+            if (num < 360000) {
+                num += 40;
+            } else {
+                num = 0;
+                dom.style.transform = "rotateY(0deg)";
+            }
+            dom.style.transform = "rotateY(" + num + "deg) rotateX(" + num / 100 + "deg) ";
+        }
+
+        timmer = setInterval(shower, 1000);
+
+        var degree = 0;
+        var lock = true;
+        var $box = $("#box")
+        $box.mouseover(function() {
+            clearInterval(timmer);
+            $("#box1").mousewheel(function(ev, delta) {
+                if (!lock) return;
+                degree -= delta * 40;
+                $box.css('transform', 'rotateY(' + degree + 'deg)')
+                lock = false;
+                setTimeout(function() {
+                    lock = true;
+                }, 1000)
+            })
+        })
+        $box.mouseleave(function() {
+            setInterval(shower, 1000);
+        })
+    }
+</script>
+
+</html>
